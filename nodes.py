@@ -1,11 +1,38 @@
 COMPARE_FUNCTIONS = {
-    "==": lambda a, b: a == b,
-    "!=": lambda a, b: a != b,
-    "<": lambda a, b: a < b,
-    ">": lambda a, b: a > b,
-    "<=": lambda a, b: a <= b,
-    ">=": lambda a, b: a >= b,
+    "a == b": lambda a, b: a == b,
+    "a != b": lambda a, b: a != b,
+    "a < b": lambda a, b: a < b,
+    "a > b": lambda a, b: a > b,
+    "a <= b": lambda a, b: a <= b,
+    "a >= b": lambda a, b: a >= b,
 }
+
+
+class AlwaysEqualProxy(str):
+    def __eq__(self, _):
+        return True
+
+    def __ne__(self, _):
+        return False
+
+
+class String:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {"value": ("STRING", {"default": ""})},
+        }
+
+    RETURN_TYPES = ("STRING",)
+
+    RETURN_NAMES = ("STRING",)
+
+    FUNCTION = "execute"
+
+    CATEGORY = "Logic"
+
+    def execute(self, value):
+        return value
 
 
 class Int:
@@ -37,11 +64,12 @@ class Compare:
         """
         Comparison node takes two inputs, a and b, and compares them.
         """
+        s.compare_functions = list(COMPARE_FUNCTIONS.keys())
         return {
             "required": {
-                "a": (),
-                "b": (),
-                "comparison": (list(COMPARE_FUNCTIONS.keys()), {"default": "=="}),
+                "a": (AlwaysEqualProxy("*"), {"default": 0}),
+                "b": (AlwaysEqualProxy("*"), {"default": 0}),
+                "comparison": (s.compare_functions, {"default": "a == b"}),
             },
         }
 
@@ -65,42 +93,60 @@ class Compare:
         Returns:
             : The result of the comparison.
         """
-        return COMPARE_FUNCTIONS[comparison](a, b)
+        return (COMPARE_FUNCTIONS[comparison](a, b),)
+
+
+class IfExecute:
+    """
+    This node executes IF_TRUE if ANY is True, otherwise it executes IF_FALSE.
+
+    ANY can be any input, IF_TRUE and IF_FALSE can be any output.
+    """
+
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+                "ANY": (AlwaysEqualProxy("*"),),
+                "IF_TRUE": (AlwaysEqualProxy("*"),),
+                "IF_FALSE": (AlwaysEqualProxy("*"),),
+            },
+        }
+
+    RETURN_TYPES = (AlwaysEqualProxy("*"),)
+
+    RETURN_NAMES = "?"
+
+    FUNCTION = "return_based_on_bool"
+
+    CATEGORY = "Logic"
+
+    def return_based_on_bool(self, ANY, IF_TRUE, IF_FALSE):
+        return (IF_TRUE if ANY else IF_FALSE,)
 
 
 class DebugPrint:
-
     """
     This node prints the input to the console.
     """
 
-    def __init__(self):
-        pass
-
     @classmethod
     def INPUT_TYPES(s):
-        class InputTypeProxy(str):
-            def __eq__(self, other):
-                return True
-
-            def __ne__(self, other):
-                return False
-
         """
         Takes in any input.
 
         """
-        return {"required": {"ANY": (InputTypeProxy("*"),)}}
+        return {"required": {"ANY": (AlwaysEqualProxy({}),)}}
 
     RETURN_TYPES = ()
 
     OUTPUT_NODE = True
 
-    FUNCTION = "execute"
+    FUNCTION = "log_input"
 
     CATEGORY = "Logic"
 
-    def execute(self, ANY):
+    def log_input(self, ANY):
         print(ANY)
         return {}
 
@@ -110,6 +156,8 @@ class DebugPrint:
 NODE_CLASS_MAPPINGS = {
     "Compare": Compare,
     "Int": Int,
+    "String": String,
+    "If ANY execute A else B": IfExecute,
     "DebugPrint": DebugPrint,
 }
 
@@ -117,5 +165,7 @@ NODE_CLASS_MAPPINGS = {
 NODE_DISPLAY_NAME_MAPPINGS = {
     "Compare": "Compare",
     "Int": "Int",
+    "String": "String",
+    "If ANY execute A else B": "If",
     "DebugPrint": "DebugPrint",
 }
