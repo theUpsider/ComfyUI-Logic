@@ -1,6 +1,11 @@
 # ComfyUI Logic Nodes Extension
 
-This repository contains an extension to [ComfyUI](https://github.com/comfyanonymous/ComfyUI) that introduces logic nodes and conditional rendering capabilities. With this extension, you can easily integrate logical operations and conditions into your workflow.
+This repository contains an extension to [ComfyUI](https://github.com/comfyanonymous/ComfyUI) that introduces logic nodes and conditional rendering capabilities:
+- If
+- Compare
+- Int, String
+
+![image](https://github.com/theUpsider/ComfyUI-Logic/assets/25013640/7807b2a4-989d-4021-9572-1d2d13725304)
 > **_NOTE:_** This extension is still in development and may contain bugs. Please report any issues you encounter. New features are in development!
 
 
