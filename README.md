@@ -3,7 +3,7 @@
 This repository contains an extension to [ComfyUI](https://github.com/comfyanonymous/ComfyUI) that introduces logic nodes and conditional rendering capabilities:
 - If
 - Compare
-- Int, String
+- Int, String, Float, Bool
 
 ![image](https://github.com/theUpsider/ComfyUI-Logic/assets/25013640/7807b2a4-989d-4021-9572-1d2d13725304)
 > **_NOTE:_** This extension is still in development and may contain bugs. Please report any issues you encounter. New features are in development!
@@ -15,7 +15,7 @@ This repository contains an extension to [ComfyUI](https://github.com/comfyanony
 ## Features
 
 - **Comparison Nodes**: Compare two values using various comparison operators.
-- **Data Type Nodes**: Convert and handle `Int` and `String` data types.
+- **Data Type Nodes**: Convert and handle `Int`, `String`, `Float` and `Bool` data types.
 - **Conditional Execution**: Execute different nodes based on a boolean condition.
 - **Debugging**: Print any input to the console for debugging purposes.
 
@@ -39,6 +39,14 @@ Accepts an integer value and returns it.
 ### String
 
 Accepts a string value and returns it.
+
+### Float
+
+Accepts a float value and returns it.
+
+### Bool
+
+Accepts a boolean value and returns it.
 
 ### If
 
