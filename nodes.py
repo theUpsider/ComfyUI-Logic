@@ -32,7 +32,7 @@ class String:
     CATEGORY = "Logic"
 
     def execute(self, value):
-        return value
+        return (value,)
 
 
 class Int:
@@ -51,7 +51,45 @@ class Int:
     CATEGORY = "Logic"
 
     def execute(self, value):
-        return value
+        return (value,)
+
+
+class Float:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {"value": ("FLOAT", {"default": 0, "step": 0.01})},
+        }
+
+    RETURN_TYPES = ("FLOAT",)
+
+    RETURN_NAMES = ("FLOAT",)
+
+    FUNCTION = "execute"
+
+    CATEGORY = "Logic"
+
+    def execute(self, value):
+        return (value,)
+
+
+class Bool:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {"value": ("BOOLEAN", {"default": False})},
+        }
+
+    RETURN_TYPES = ("BOOLEAN",)
+
+    RETURN_NAMES = ("BOOLEAN",)
+
+    FUNCTION = "execute"
+
+    CATEGORY = "Logic"
+
+    def execute(self, value):
+        return (value,)
 
 
 class Compare:
@@ -156,6 +194,8 @@ class DebugPrint:
 NODE_CLASS_MAPPINGS = {
     "Compare": Compare,
     "Int": Int,
+    "Float": Float,
+    "Bool": Bool,
     "String": String,
     "If ANY execute A else B": IfExecute,
     "DebugPrint": DebugPrint,
@@ -165,6 +205,8 @@ NODE_CLASS_MAPPINGS = {
 NODE_DISPLAY_NAME_MAPPINGS = {
     "Compare": "Compare",
     "Int": "Int",
+    "Float": "Float",
+    "Bool": "Bool",
     "String": "String",
     "If ANY execute A else B": "If",
     "DebugPrint": "DebugPrint",
