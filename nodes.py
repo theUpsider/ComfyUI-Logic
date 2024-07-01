@@ -20,7 +20,7 @@ class String:
     @classmethod
     def INPUT_TYPES(s):
         return {
-            "required": {"value": ("STRING", {"default": ""})},
+            "required": {"value": ("STRING", {"default": "", "multiline": True})},
         }
 
     RETURN_TYPES = ("STRING",)
