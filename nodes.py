@@ -192,22 +192,22 @@ class DebugPrint:
 # A dictionary that contains all nodes you want to export with their names
 # NOTE: names should be globally unique
 NODE_CLASS_MAPPINGS = {
-    "Compare": Compare,
-    "Int": Int,
-    "Float": Float,
-    "Bool": Bool,
-    "String": String,
-    "If ANY execute A else B": IfExecute,
-    "DebugPrint": DebugPrint,
+    "Compare-🔬": Compare,
+    "Int-🔬": Int,
+    "Float-🔬": Float,
+    "Bool-🔬": Bool,
+    "String-🔬": String,
+    "If ANY return A else B-🔬": IfExecute,
+    "DebugPrint-🔬": DebugPrint,
 }
 
 # A dictionary that contains the friendly/humanly readable titles for the nodes
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "Compare": "Compare",
-    "Int": "Int",
-    "Float": "Float",
-    "Bool": "Bool",
-    "String": "String",
-    "If ANY execute A else B": "If",
-    "DebugPrint": "DebugPrint",
+    "Compare-🔬": "Compare",
+    "Int-🔬": "Int",
+    "Float-🔬": "Float",
+    "Bool-🔬": "Bool",
+    "String-🔬": "String",
+    "If ANY return A else B-🔬": "If ANY return A else B",
+    "DebugPrint-🔬": "DebugPrint",
 }
