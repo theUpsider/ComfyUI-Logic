@@ -11,7 +11,8 @@ This repository contains an extension to [ComfyUI](https://github.com/comfyanony
 
 ## Installation
 - Clone this repository into the `custom_nodes` folder of ComfyUI. Restart ComfyUI and the extension should be loaded.
-
+- Alternativly use [ComfyUI Manager](https://github.com/ltdrdata/ComfyUI-Manager)
+- Or use the comfy registry: `comfy node registry-install comfyui-logic`, more infos at [ComfyUI Registry](https://docs.comfy.org/registry/overview)
 ## Features
 
 - **Comparison Nodes**: Compare two values using various comparison operators.
