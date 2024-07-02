@@ -1,4 +1,4 @@
-# ComfyUI Logic Nodes Extension
+# ComfyUI Logic Nodes Extension - 🔬
 
 This repository contains an extension to [ComfyUI](https://github.com/comfyanonymous/ComfyUI) that introduces logic nodes and conditional rendering capabilities:
 - If
@@ -56,6 +56,7 @@ Executes the `IF_TRUE` node if the `ANY` input is `True`, otherwise it executes 
 
 Prints the provided input to the console. Useful for debugging.
 
+>Note: The names have a globally unique identifier: <nodename>-🔬 so dear developers please refrain from also using this name for other nodes.
 
 ## Author
 - David Fischer
