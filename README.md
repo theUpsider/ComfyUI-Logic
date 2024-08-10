@@ -49,9 +49,9 @@ Accepts a float value and returns it.
 
 Accepts a boolean value and returns it.
 
-### If
+### If ANY return A else B
 
-Executes the `IF_TRUE` node if the `ANY` input is `True`, otherwise it executes the `IF_FALSE` node.
+Pass the value of the `IF_TRUE` node if the `ANY` input is `True`, otherwise it passes the `IF_FALSE` node.
 
 ### DebugPrint
 
