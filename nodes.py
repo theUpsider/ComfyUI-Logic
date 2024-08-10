@@ -1,3 +1,5 @@
+import nodes
+
 COMPARE_FUNCTIONS = {
     "a == b": lambda a, b: a == b,
     "a != b": lambda a, b: a != b,
@@ -153,7 +155,7 @@ class IfExecute:
 
     RETURN_TYPES = (AlwaysEqualProxy("*"),)
 
-    RETURN_NAMES = "?"
+    RETURN_NAMES = ("?",)
 
     FUNCTION = "return_based_on_bool"
 
@@ -161,6 +163,41 @@ class IfExecute:
 
     def return_based_on_bool(self, ANY, IF_TRUE, IF_FALSE):
         return (IF_TRUE if ANY else IF_FALSE,)
+
+
+class IfExecuteNode:
+    """
+    This node lets you choose from all nodes and execute the selected one when ANY is True.
+    """
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        cls.node_names = list(nodes.NODE_CLASS_MAPPINGS.keys())
+        return {
+            "required": {
+                "ANY": (AlwaysEqualProxy("*"),),
+                "NODE_TRUE": (cls.node_names, {"default": cls.node_names[0]}),
+                "NODE_FALSE": (cls.node_names, {"default": cls.node_names[0]}),
+            },
+        }
+
+    RETURN_TYPES = ()
+
+    OUTPUT_NODE = True
+
+    CATEGORY = "Logic"
+
+    FUNCTION = "execute"
+
+    def execute(self, ANY, NODE_TRUE, NODE_FALSE):
+        if ANY:
+            return self.execute_node(NODE_TRUE)
+        else:
+            return self.execute_node(NODE_FALSE)
+
+    def execute_node(self, node_name):
+        node = nodes.NODE_CLASS_MAPPINGS[node_name]()
+        return node.execute()
 
 
 class DebugPrint:
@@ -199,6 +236,7 @@ NODE_CLASS_MAPPINGS = {
     "String-🔬": String,
     "If ANY return A else B-🔬": IfExecute,
     "DebugPrint-🔬": DebugPrint,
+    "If ANY return A else B-🔬": IfExecuteNode,
 }
 
 # A dictionary that contains the friendly/humanly readable titles for the nodes
@@ -210,4 +248,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "String-🔬": "String",
     "If ANY return A else B-🔬": "If ANY return A else B",
     "DebugPrint-🔬": "DebugPrint",
+    "If ANY return A else B-🔬": "If ANY return A else B",
 }
