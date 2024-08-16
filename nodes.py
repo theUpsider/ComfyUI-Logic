@@ -155,6 +155,10 @@ class IfExecute:
 
     RETURN_TYPES = (AlwaysEqualProxy("*"),)
 
+    OUTPUT_TOOLTIPS = (
+        "Based on the value of ANY, either IF_TRUE or IF_FALSE will be returned.",
+    )
+
     RETURN_NAMES = ("?",)
 
     FUNCTION = "return_based_on_bool"
@@ -236,7 +240,7 @@ NODE_CLASS_MAPPINGS = {
     "String-🔬": String,
     "If ANY return A else B-🔬": IfExecute,
     "DebugPrint-🔬": DebugPrint,
-    "If ANY return A else B-🔬": IfExecuteNode,
+    # "If ANY execute A else B-🔬": IfExecuteNode,
 }
 
 # A dictionary that contains the friendly/humanly readable titles for the nodes
@@ -248,5 +252,8 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "String-🔬": "String",
     "If ANY return A else B-🔬": "If ANY return A else B",
     "DebugPrint-🔬": "DebugPrint",
-    "If ANY return A else B-🔬": "If ANY return A else B",
+    # "If ANY execute A else B-🔬": "If ANY execute A else B",
 }
+
+
+print("\033[94mtheUpsiders Logic Nodes: \033[92mLoaded\033[0m")
