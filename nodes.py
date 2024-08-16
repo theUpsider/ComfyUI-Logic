@@ -115,7 +115,7 @@ class Compare:
 
     RETURN_TYPES = ("BOOLEAN",)
 
-    RETURN_NAMES = "BOOLEAN"
+    RETURN_NAMES = ("BOOLEAN",)
 
     FUNCTION = "compare"
 
