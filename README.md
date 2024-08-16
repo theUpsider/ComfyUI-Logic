@@ -4,6 +4,7 @@ This repository contains an extension to [ComfyUI](https://github.com/comfyanony
 - If
 - Compare
 - Int, String, Float, Bool
+- If ANY return A else B
 
 ![image](https://github.com/theUpsider/ComfyUI-Logic/assets/25013640/7807b2a4-989d-4021-9572-1d2d13725304)
 > **_NOTE:_** This extension is still in development and may contain bugs. Please report any issues you encounter. New features are in development!
@@ -17,7 +18,7 @@ This repository contains an extension to [ComfyUI](https://github.com/comfyanony
 
 - **Comparison Nodes**: Compare two values using various comparison operators.
 - **Data Type Nodes**: Convert and handle `Int`, `String`, `Float` and `Bool` data types.
-- **Conditional Execution**: Execute different nodes based on a boolean condition.
+- **Conditional Execution**: Execute different nodes as input based on a boolean condition.
 - **Debugging**: Print any input to the console for debugging purposes.
 
 ## Nodes
