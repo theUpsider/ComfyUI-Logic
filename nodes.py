@@ -136,6 +136,49 @@ class Compare:
         return (COMPARE_FUNCTIONS[comparison](a, b),)
 
 
+class CompareInt:
+    """
+    This node compares two integer inputs and outputs the result of the comparison.
+    """
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        """
+        Comparison node specifically for integer inputs.
+        """
+        cls.compare_functions = list(COMPARE_FUNCTIONS.keys())
+        return {
+            "required": {
+                "a": (Int, {"default": 0}),
+                "b": (Int, {"default": 0}),
+                "comparison": (cls.compare_functions, {"default": "a == b"}),
+            },
+        }
+
+    RETURN_TYPES = ("BOOLEAN",)
+
+    RETURN_NAMES = ("BOOLEAN",)
+
+    FUNCTION = "compare"
+
+    CATEGORY = "Logic"
+
+    def compare(self, a, b, comparison):
+        """
+        Compare two integer inputs and return the result of the comparison.
+
+        Args:
+            a (int): The first integer input.
+            b (int): The second integer input.
+            comparison (str): The comparison operation to perform. 
+                              Can be one of "a == b", "a != b", "a < b", "a > b", "a <= b", "a >= b".
+
+        Returns:
+            tuple: A tuple containing the result of the comparison as a boolean.
+        """
+        return (COMPARE_FUNCTIONS[comparison](a, b),)
+
+
 class IfExecute:
     """
     This node executes IF_TRUE if ANY is True, otherwise it executes IF_FALSE.
