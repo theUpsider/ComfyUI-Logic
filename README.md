@@ -1,5 +1,5 @@
 # ComfyUI Logic Nodes Extension - 🔬
-
+> This repo is currently not maintained
 This repository contains an extension to [ComfyUI](https://github.com/comfyanonymous/ComfyUI) that introduces logic nodes and conditional rendering capabilities:
 - If
 - Compare
